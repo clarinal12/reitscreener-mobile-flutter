@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../components/card.dart';
 
 class Login extends StatelessWidget {
   final isDark;
@@ -9,15 +10,10 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: Container(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+      body: Center(
+        child: ListView(
+          shrinkWrap: true,
           children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-            ),
             this.isDark
                 ? Image.asset(
                     'lib/assets/images/reitscreener_logo_dark.png',
@@ -29,15 +25,22 @@ class Login extends StatelessWidget {
                     height: 60.0,
                     width: 273.0,
                   ),
-            SizedBox(
-              height: 30,
-            ),
-            Card(
-              child: Container(
-                padding: EdgeInsets.all(20.0),
-                child: Column(
-                  children: [],
-                ),
+            CustomCard(
+              title: Text(
+                "Sample card Title",
+                style: Theme.of(context).textTheme.title,
+              ),
+              subtitle: Text(
+                "Sample card subtitle",
+                style: Theme.of(context).textTheme.subtitle,
+              ),
+              body: Text(
+                "Sample card body",
+                style: Theme.of(context).textTheme.headline,
+              ),
+              footer: Text(
+                "Sample card footer",
+                style: Theme.of(context).textTheme.body1,
               ),
             ),
             RaisedButton(

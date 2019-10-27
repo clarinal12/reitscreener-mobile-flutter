@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../components/appDrawer.dart';
+import '../components/card.dart';
 
 class Main extends StatelessWidget {
   final toggleTheme;
@@ -21,32 +23,44 @@ class Main extends StatelessWidget {
           ),
         ],
         bottom: PreferredSize(
-            child: Container(
-              color: Theme.of(context).dividerColor,
-              height: 2.0,
-            ),
-            preferredSize: Size.fromHeight(4.0)),
+          child: Container(
+            color: Theme.of(context).dividerTheme.color,
+            height: 2.0,
+          ),
+          preferredSize: Size.fromHeight(4.0),
+        ),
+      ),
+      drawer: AppDrawer(
+        isDark: this.isDark,
       ),
       backgroundColor: Theme.of(context).primaryColor,
-      body: Container(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
+      body: ListView(
+        children: <Widget>[
+          CustomCard(
+            title: Text(
+              "Sample card Title",
+              style: Theme.of(context).textTheme.title,
             ),
-            Text('Main Screen'),
-            SizedBox(height: 20),
-            RaisedButton(
-              child: Text('Go to authentication'),
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, '/');
-              },
+            subtitle: Text(
+              "Sample card subtitle",
+              style: Theme.of(context).textTheme.subtitle,
             ),
-          ],
-        ),
+            body: Text(
+              "Sample card body",
+              style: Theme.of(context).textTheme.headline,
+            ),
+            footer: Text(
+              "Sample card footer",
+              style: Theme.of(context).textTheme.body1,
+            ),
+          ),
+          RaisedButton(
+            child: Text('Go to authentication'),
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, '/');
+            },
+          ),
+        ],
       ),
     );
   }

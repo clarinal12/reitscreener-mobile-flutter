@@ -12,7 +12,6 @@ class Authentication extends StatelessWidget {
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             this.isDark
                 ? Image.asset(
